@@ -31,8 +31,10 @@ RUN NODE_MAJOR=20 && \
     apt-get install -y nodejs
 
 # Download and install VSCode
-RUN curl -o /tmp/vscode.deb -L 'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64' && \
-    apt-get install ./tmp/vscode.deb -y
+RUN cd /tmp && \
+    curl -o vscode.deb -L 'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64' && \
+    apt-get install ./vscode.deb -y && \
+    cd
 
 # Install Rust
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y

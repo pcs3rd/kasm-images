@@ -14,7 +14,7 @@ RUN apt-get update && \
     python3 python3-pip \
     curl wget git \
     flatpak snapd \
-    gcc g++ cmake \
+    gcc g++ make clang \
     meson \
     ninja-build \
     jupyter-notebook

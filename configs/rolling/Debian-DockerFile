@@ -1,0 +1,45 @@
+FROM kasmweb/debian-bookworm-desktop:1.14.0-rolling
+USER root
+
+ENV HOME /home/kasm-default-profile
+ENV STARTUPDIR /dockerstartup
+ENV INST_SCRIPTS $STARTUPDIR/install
+WORKDIR $HOME
+
+######### Container Modifications ###########
+
+# Preinstall popular programming languages and package managers
+RUN apt-get update && \
+    apt-get install -y \
+    python3 python3-pip \
+    curl wget \
+    flatpak \
+    g++ \
+    cmake \
+    meson \
+    ninja-build \
+    jupyter-notebook
+
+# Install Snap
+RUN apt-get install -y snapd && \
+    systemctl enable --now snapd.service
+
+# Install Node.js using Snap
+RUN snap install --classic node
+
+# Install VSCode via Snap
+RUN snap install code --classic
+
+# Install Rust
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+
+######### End Customizations ###########
+
+RUN chown 1000:0 $HOME
+RUN $STARTUPDIR/set_user_permission.sh $HOME
+
+ENV HOME /home/kasm-user
+WORKDIR $HOME
+RUN mkdir -p $HOME && chown -R 1000:0 $HOME
+
+USER 1000

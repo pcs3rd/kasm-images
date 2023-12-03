@@ -1,5 +1,4 @@
 FROM kasmweb/core-debian-bookworm:1.14.0
-
 USER root
 
 ENV HOME /home/kasm-default-profile
@@ -18,10 +17,8 @@ RUN apt-get update && \
     g++ \
     cmake \
     meson \
-    ninja-build
-
-# Install JupyterLab via pip
-RUN python3 -m pip install jupyterlab
+    ninja-build \
+    jupyter-notebook
 
 # Install Snap
 RUN apt-get install -y snapd && \

@@ -21,7 +21,6 @@ RUN apt-get update && \
 
 # Install Homebrew
 RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-RUN echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >> /etc/profile
 
 # Install dependencies for NodeSource
 RUN apt-get install -y ca-certificates curl gnupg && \

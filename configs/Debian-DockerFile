@@ -21,7 +21,6 @@ RUN apt-get update && \
 
 # Install Linuxbrew
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
-RUN echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >> /etc/profile
 
 # Install dependencies for NodeSource
 RUN apt-get install -y ca-certificates curl gnupg && \

@@ -47,7 +47,7 @@ jobs:
 
     - name: Push To Docker Hub
       run: |
-        docker login docker.io kbdharun -p ${{ secrets.DOCKER_TOKEN }}
+        docker login docker.io -u kbdharun -p ${{ secrets.DOCKER_TOKEN }}
         docker image push "docker.io/kbdharun/kasm-dev-ubuntu:1.14.0"
 
   debian-image-ghcr:

@@ -1,4 +1,4 @@
-FROM kasmweb/debian-bookworm-desktop:1.14.0-rolling
+FROM kasmweb/core-debian-bookworm:1.14.0
 USER root
 
 ENV HOME /home/kasm-default-profile
@@ -13,7 +13,7 @@ RUN apt-get update && \
     apt-get install -y \
     python3 python3-pip \
     curl wget git \
-    flatpak \
+    flatpak snapd \
     g++ cmake \
     meson \
     ninja-build \

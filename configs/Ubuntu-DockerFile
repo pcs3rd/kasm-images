@@ -19,8 +19,8 @@ RUN apt-get update && \
     ninja-build \
     jupyter-notebook
 
-# Install Linuxbrew
-RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+# Install Homebrew
+RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 RUN echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >> /etc/profile
 
 # Install dependencies for NodeSource

@@ -24,3 +24,17 @@ jobs:
       run: |
         docker login ghcr.io -u ${{ env.REGISTRY_USER }} -p ${{ env.REGISTRY_PASSWORD }}
         docker image push "ghcr.io/kbdharun/kasm-dev-debian:1.14.0"
+    
+  build-ubuntu-image:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Build the Docker image
+      run: docker image build -f configs/Ubuntu-DockerFile -t ghcr.io/kbdharun/kasm-dev-ubuntu:1.14.0 .
+
+    # Push the image to GHCR (Image Registry)
+    - name: Push To GHCR
+      run: |
+        docker login ghcr.io -u ${{ env.REGISTRY_USER }} -p ${{ env.REGISTRY_PASSWORD }}
+        docker image push "ghcr.io/kbdharun/kasm-dev-ubuntu:1.14.0"

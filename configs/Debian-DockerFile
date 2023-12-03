@@ -13,14 +13,11 @@ RUN apt-get update && \
     apt-get install -y \
     python3 python3-pip \
     curl wget git \
-    flatpak snapd \
+    flatpak snapd firefox \
     gcc golang g++ make clang \
     meson \
     ninja-build \
     jupyter-notebook
-
-# Install Homebrew
-RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Install dependencies for NodeSource
 RUN apt-get install -y ca-certificates curl gnupg && \
@@ -32,12 +29,6 @@ RUN NODE_MAJOR=20 && \
     echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list && \
     apt-get update && \
     apt-get install -y nodejs
-
-# Download and install VSCode
-RUN cd /tmp && \
-    curl -o vscode.deb -L 'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64' && \
-    apt-get install ./vscode.deb -y && \
-    cd
 
 # Install Rust
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y

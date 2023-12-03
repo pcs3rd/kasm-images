@@ -12,24 +12,15 @@ WORKDIR $HOME
 RUN dnf install -y @development-tools \
     python3 python3-pip \
     curl wget git \
-    flatpak snapd \
+    flatpak snapd firefox \
     gcc golang gcc-c++ make clang \
     meson \
     ninja-build \
     jupyter-notebook
 
-# Install Homebrew
-RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
 # Install Node.js using provided RPM
 RUN dnf install -y https://rpm.nodesource.com/pub_18.x/nodistro/repo/nodesource-release-nodistro-1.noarch.rpm && \
     dnf install -y nodejs --setopt=nodesource-nodejs.module_hotfixes=1
-
-# Download and install VSCode
-RUN cd /tmp && \
-    curl -o vscode.rpm -L 'https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64' && \
-    dnf install ./vscode.rpm -y && \
-    cd
 
 # Install Rust
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y

@@ -12,13 +12,14 @@ env:
   REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
+
   build-rolling-image:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
 
     - name: Build the Rolling Docker image
-      run: docker image build -f configs/rolling/Debian-DockerFile -t ghcr.io/kbdharun/kasm-dev-debian-rolling:latest
+      run: docker image build -f configs/rolling/Debian-DockerFile -t ghcr.io/kbdharun/kasm-dev-debian-rolling:latest .
 
     # Push the image to GHCR (Image Registry)
     - name: Push Rolling To GHCR

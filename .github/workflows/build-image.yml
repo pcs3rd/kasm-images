@@ -15,61 +15,40 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    -  name: Login to Docker Hub
-       uses: docker/login-action@v3
-       with:
-          username: kbdharun
-          password: ${{ secrets.DOCKER_TOKEN }}
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v3
-       
-    - name: Build and push to Docker
-      uses: docker/build-push-action@v5
-      with:
-          context: .
-          file: ./configs/Debian-DockerFile
-          push: true
-          tags: kbdharun/kasm-dev-debian:1.14.0
+
+    - name: Build the Docker image
+      run: docker image build -f configs/Debian-DockerFile -t docker.io/kbdharun/kasm-dev-debian:1.14.0 .
+
+    - name: Push To Docker Hub
+      run: |
+        docker login docker.io -u kbdharun -p ${{ secrets.DOCKER_TOKEN }}
+        docker image push "docker.io/kbdharun/kasm-dev-debian:1.14.0"
 
   fedora-image-docker:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    -  name: Login to Docker Hub
-       uses: docker/login-action@v3
-       with:
-          username: kbdharun
-          password: ${{ secrets.DOCKER_TOKEN }}
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v3
-       
-    - name: Build and push to Docker
-      uses: docker/build-push-action@v5
-      with:
-          context: .
-          file: ./configs/Fedora-DockerFile
-          push: true
-          tags: kbdharun/kasm-dev-fedora:1.14.0
+
+    - name: Build the Docker image
+      run: docker image build -f configs/Fedora-DockerFile -t docker.io/kbdharun/kasm-dev-fedora:1.14.0 .
+
+    - name: Push To Docker Hub
+      run: |
+        docker login docker.io -u kbdharun -p ${{ secrets.DOCKER_TOKEN }}
+        docker image push "docker.io/kbdharun/kasm-dev-fedora:1.14.0"
     
   ubuntu-image-docker:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    -  name: Login to Docker Hub
-       uses: docker/login-action@v3
-       with:
-          username: kbdharun
-          password: ${{ secrets.DOCKER_TOKEN }}
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v3
-       
-    - name: Build and push to Docker
-      uses: docker/build-push-action@v5
-      with:
-          context: .
-          file: ./configs/Ubuntu-DockerFile
-          push: true
-          tags: kbdharun/kasm-dev-ubuntu:1.14.0
+
+    - name: Build the Docker image
+      run: docker image build -f configs/Ubuntu-DockerFile -t docker.io/kbdharun/kasm-dev-ubuntu:1.14.0 .
+
+    - name: Push To Docker Hub
+      run: |
+        docker login docker.io kbdharun -p ${{ secrets.DOCKER_TOKEN }}
+        docker image push "docker.io/kbdharun/kasm-dev-ubuntu:1.14.0"
 
   debian-image-ghcr:
     runs-on: ubuntu-latest
@@ -79,7 +58,6 @@ jobs:
     - name: Build the Docker image
       run: docker image build -f configs/Debian-DockerFile -t ghcr.io/kbdharun/kasm-dev-debian:1.14.0 .
 
-    # Push the image to GHCR (Image Registry)
     - name: Push To GHCR
       run: |
         docker login ghcr.io -u ${{ env.REGISTRY_USER }} -p ${{ env.REGISTRY_PASSWORD }}
@@ -93,7 +71,6 @@ jobs:
     - name: Build the Docker image
       run: docker image build -f configs/Fedora-DockerFile -t ghcr.io/kbdharun/kasm-dev-fedora:1.14.0 .
 
-    # Push the image to GHCR (Image Registry)
     - name: Push To GHCR
       run: |
         docker login ghcr.io -u ${{ env.REGISTRY_USER }} -p ${{ env.REGISTRY_PASSWORD }}
@@ -107,7 +84,6 @@ jobs:
     - name: Build the Docker image
       run: docker image build -f configs/Ubuntu-DockerFile -t ghcr.io/kbdharun/kasm-dev-ubuntu:1.14.0 .
 
-    # Push the image to GHCR (Image Registry)
     - name: Push To GHCR
       run: |
         docker login ghcr.io -u ${{ env.REGISTRY_USER }} -p ${{ env.REGISTRY_PASSWORD }}

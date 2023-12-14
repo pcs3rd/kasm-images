@@ -14,4 +14,4 @@ RUN dnf install -y @development-tools \
     perl-core php-cli R ruby swiftlang \
     mariadb postgresql postgresql-server \
     sqlite sqlite-devel sqlite-tcl sqlitebrowser redis \
-    cassandra cassandra-server \
+    cassandra cassandra-server

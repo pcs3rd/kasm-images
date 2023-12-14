@@ -13,5 +13,4 @@ RUN dnf install -y @development-tools \
     elixir lua julia haskell-platform \
     perl-core php-cli R ruby swiftlang \
     mariadb postgresql postgresql-server \
-    sqlite sqlite-devel sqlite-tcl sqlitebrowser redis \
-    cassandra cassandra-server
+    sqlite sqlite-devel sqlite-tcl sqlitebrowser redis

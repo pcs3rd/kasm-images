@@ -19,12 +19,12 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Build the Docker image
-      run: docker image build -f configs/Fedora-DockerFile -t docker.io/kbdharun/kasm-dev-fedora:1.14.0 .
+      run: docker image build -f configs/FedoraXFCE-DockerFile -t docker.io/kbdharun/kasm-dev-fedora:latest .
 
     - name: Push To Docker Hub
       run: |
         docker login docker.io -u kbdharun -p ${{ secrets.DOCKER_TOKEN }}
-        docker image push "docker.io/kbdharun/kasm-dev-fedora:1.14.0"
+        docker image push "docker.io/kbdharun/kasm-dev-fedora:latest"
 
   fedora-image-ghcr:
     runs-on: ubuntu-latest
@@ -32,9 +32,35 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Build the Docker image
-      run: docker image build -f configs/Fedora-DockerFile -t ghcr.io/kbdharun/kasm-dev-fedora:1.14.0 .
+      run: docker image build -f configs/FedoraXFCE-DockerFile -t ghcr.io/kbdharun/kasm-dev-fedora:latest .
 
     - name: Push To GHCR
       run: |
         docker login ghcr.io -u ${{ env.REGISTRY_USER }} -p ${{ env.REGISTRY_PASSWORD }}
-        docker image push "ghcr.io/kbdharun/kasm-dev-fedora:1.14.0"
+        docker image push "ghcr.io/kbdharun/kasm-dev-fedora:latest"
+
+  fedora-kde-image-docker:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Build the Docker image
+      run: docker image build -f configs/FedoraKDE-DockerFile -t docker.io/kbdharun/kasm-dev-fedora-kde:latest .
+
+    - name: Push To Docker Hub
+      run: |
+        docker login docker.io -u kbdharun -p ${{ secrets.DOCKER_TOKEN }}
+        docker image push "docker.io/kbdharun/kasm-dev-fedora-kde:latest"
+
+  fedora-kde-image-ghcr:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Build the Docker image
+      run: docker image build -f configs/FedoraKDE-DockerFile -t ghcr.io/kbdharun/kasm-dev-fedora-kde:latest .
+
+    - name: Push To GHCR
+      run: |
+        docker login ghcr.io -u ${{ env.REGISTRY_USER }} -p ${{ env.REGISTRY_PASSWORD }}
+        docker image push "ghcr.io/kbdharun/kasm-dev-fedora-kde:latest"

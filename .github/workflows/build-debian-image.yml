@@ -19,12 +19,12 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Build the Docker image
-      run: docker image build -f configs/Debian-DockerFile -t docker.io/kbdharun/kasm-dev-debian:1.14.0 .
+      run: docker image build -f configs/Debian-DockerFile -t docker.io/kbdharun/kasm-dev-debian:latest .
 
     - name: Push To Docker Hub
       run: |
         docker login docker.io -u kbdharun -p ${{ secrets.DOCKER_TOKEN }}
-        docker image push "docker.io/kbdharun/kasm-dev-debian:1.14.0"
+        docker image push "docker.io/kbdharun/kasm-dev-debian:latest"
 
   debian-image-ghcr:
     runs-on: ubuntu-latest
@@ -32,9 +32,9 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Build the Docker image
-      run: docker image build -f configs/Debian-DockerFile -t ghcr.io/kbdharun/kasm-dev-debian:1.14.0 .
+      run: docker image build -f configs/Debian-DockerFile -t ghcr.io/kbdharun/kasm-dev-debian:latest .
 
     - name: Push To GHCR
       run: |
         docker login ghcr.io -u ${{ env.REGISTRY_USER }} -p ${{ env.REGISTRY_PASSWORD }}
-        docker image push "ghcr.io/kbdharun/kasm-dev-debian:1.14.0"
+        docker image push "ghcr.io/kbdharun/kasm-dev-debian:latest"

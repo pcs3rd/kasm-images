@@ -8,7 +8,7 @@ RUN apt-get update && \
     gcc golang g++ make clang \
     meson \
     ninja-build \
-    jupyter-notebook libreoffice
+    jupyter-notebook
 
 # Install dependencies for NodeSource
 RUN apt-get install -y ca-certificates curl gnupg && \

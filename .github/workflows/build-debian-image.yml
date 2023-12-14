@@ -26,6 +26,15 @@ jobs:
         docker login docker.io -u kbdharun -p ${{ secrets.DOCKER_TOKEN }}
         docker image push "docker.io/kbdharun/kasm-dev-debian:latest"
 
+    - uses: sigstore/cosign-installer@v3.2.0
+    - name: Sign container image
+      run: |
+        cosign sign -y --key env://COSIGN_PRIVATE_KEY ${{ steps.registry_case.outputs.lowercase }}/${{ steps.build_image.outputs.image }}@${TAGS}
+      env:
+        TAGS: ${{ steps.push.outputs.digest }}
+        COSIGN_EXPERIMENTAL: false
+        COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
+
   debian-image-ghcr:
     runs-on: ubuntu-latest
     steps:
@@ -38,3 +47,12 @@ jobs:
       run: |
         docker login ghcr.io -u ${{ env.REGISTRY_USER }} -p ${{ env.REGISTRY_PASSWORD }}
         docker image push "ghcr.io/kbdharun/kasm-dev-debian:latest"
+    
+    - uses: sigstore/cosign-installer@v3.2.0
+    - name: Sign container image
+      run: |
+        cosign sign -y --key env://COSIGN_PRIVATE_KEY ${{ steps.registry_case.outputs.lowercase }}/${{ steps.build_image.outputs.image }}@${TAGS}
+      env:
+        TAGS: ${{ steps.push.outputs.digest }}
+        COSIGN_EXPERIMENTAL: false
+        COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}

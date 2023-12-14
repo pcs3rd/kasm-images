@@ -24,12 +24,6 @@ RUN dnf install -y https://rpm.nodesource.com/pub_18.x/nodistro/repo/nodesource-
 # Install Rust
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
-## Build with sudo
-RUN dnf update && \
-    dnf install -y sudo && \
-    echo 'kasm-user ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers && \
-    && rm -rf /var/cache/dnf/*
-
 ######### End Customizations ###########
 
 RUN chown 1000:0 $HOME

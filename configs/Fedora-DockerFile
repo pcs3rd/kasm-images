@@ -1,12 +1,4 @@
 FROM lscr.io/linuxserver/webtop:fedora-xfce
-USER root
-
-ENV HOME /home/kasm-default-profile
-ENV STARTUPDIR /dockerstartup
-ENV INST_SCRIPTS $STARTUPDIR/install
-WORKDIR $HOME
-
-######### Container Modifications ###########
 
 # Preinstall popular programming languages and package managers
 RUN dnf install -y @development-tools \
@@ -23,14 +15,3 @@ RUN dnf install -y https://rpm.nodesource.com/pub_18.x/nodistro/repo/nodesource-
 
 # Install Rust
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-
-######### End Customizations ###########
-
-RUN chown 1000:0 $HOME
-RUN $STARTUPDIR/set_user_permission.sh $HOME
-
-ENV HOME /home/kasm-user
-WORKDIR $HOME
-RUN mkdir -p $HOME && chown -R 1000:0 $HOME
-
-USER 1000

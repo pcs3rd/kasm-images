@@ -1,0 +1,40 @@
+name: Build and Publish Fedora Image
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+        - configs/Fedora-DockerFile
+  workflow_dispatch:
+
+env:
+    REGISTRY_USER: ${{ github.actor }}
+    REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+
+  fedora-image-docker:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Build the Docker image
+      run: docker image build -f configs/Fedora-DockerFile -t docker.io/kbdharun/kasm-dev-fedora:1.14.0 .
+
+    - name: Push To Docker Hub
+      run: |
+        docker login docker.io -u kbdharun -p ${{ secrets.DOCKER_TOKEN }}
+        docker image push "docker.io/kbdharun/kasm-dev-fedora:1.14.0"
+
+  fedora-image-ghcr:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Build the Docker image
+      run: docker image build -f configs/Fedora-DockerFile -t ghcr.io/kbdharun/kasm-dev-fedora:1.14.0 .
+
+    - name: Push To GHCR
+      run: |
+        docker login ghcr.io -u ${{ env.REGISTRY_USER }} -p ${{ env.REGISTRY_PASSWORD }}
+        docker image push "ghcr.io/kbdharun/kasm-dev-fedora:1.14.0"

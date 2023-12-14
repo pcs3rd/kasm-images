@@ -1,4 +1,4 @@
-FROM kasmweb/core-debian-bookworm:1.14.0
+FROM lscr.io/linuxserver/webtop:debian-xfce
 USER root
 
 ENV HOME /home/kasm-default-profile
@@ -13,11 +13,10 @@ RUN apt-get update && \
     apt-get install -y \
     python3 python3-pip \
     curl wget git \
-    flatpak snapd chromium \
     gcc golang g++ make clang \
     meson \
     ninja-build \
-    jupyter-notebook
+    jupyter-notebook libreoffice
 
 # Install dependencies for NodeSource
 RUN apt-get install -y ca-certificates curl gnupg && \
@@ -32,6 +31,12 @@ RUN NODE_MAJOR=20 && \
 
 # Install Rust
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+
+## Build with sudo
+RUN apt-get update && \
+    apt-get install -y sudo && \
+    echo 'kasm-user ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers && \
+    rm -rf /var/lib/apt/list/*
 
 ######### End Customizations ###########
 

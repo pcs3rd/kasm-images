@@ -25,7 +25,7 @@ RUN dnf install -y https://rpm.nodesource.com/pub_18.x/nodistro/repo/nodesource-
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 ## Build with sudo
-dnf update && \
+RUN dnf update && \
     dnf install -y sudo && \
     echo 'kasm-user ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers && \
     && rm -rf /var/cache/dnf/*

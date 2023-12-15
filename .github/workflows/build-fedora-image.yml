@@ -66,7 +66,7 @@ jobs:
 
     - name: Push To GHCR
       run: |
-        docker login quay.io -u ${{ env.QUAY_USER }} -p ${{ env.QUAY_TOKEN }}
+        docker login quay.io -u ${{ secrets.QUAY_USER }} -p ${{ secrets.QUAY_TOKEN }}
         docker image push "quay.io/kbdharun/kasm-dev-fedora:latest"
     
     - uses: sigstore/cosign-installer@v3.3.0
@@ -129,7 +129,7 @@ jobs:
 
     - name: Push To GHCR
       run: |
-        docker login quay.io -u ${{ env.QUAY_USER }} -p ${{ env.QUAY_TOKEN }}
+        docker login quay.io -u ${{ secrets.QUAY_USER }} -p ${{ secrets.QUAY_TOKEN }}
         docker image push "quay.io/kbdharun/kasm-dev-fedora-kde:latest"
     
     - uses: sigstore/cosign-installer@v3.3.0

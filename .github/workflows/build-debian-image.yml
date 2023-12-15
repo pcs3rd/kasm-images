@@ -21,7 +21,7 @@ jobs:
     - name: Build the Docker image
       run: docker image build -f configs/Debian/Dockerfile -t docker.io/kbdharun/kasm-dev-debian:latest .
 
-    - name: Push To Docker Hub
+    - name: Push to DockerHub
       run: |
         docker login docker.io -u kbdharun -p ${{ secrets.DOCKER_TOKEN }}
         docker image push "docker.io/kbdharun/kasm-dev-debian:latest"
@@ -42,7 +42,7 @@ jobs:
     - name: Build the Docker image
       run: docker image build -f configs/Debian/Dockerfile -t ghcr.io/kbdharun/kasm-dev-debian:latest .
 
-    - name: Push To GHCR
+    - name: Push to GHCR
       run: |
         docker login ghcr.io -u ${{ env.REGISTRY_USER }} -p ${{ env.REGISTRY_PASSWORD }}
         docker image push "ghcr.io/kbdharun/kasm-dev-debian:latest"
@@ -63,7 +63,7 @@ jobs:
     - name: Build the Docker image
       run: docker image build -f configs/Debian/Dockerfile -t quay.io/kbdharun/kasm-dev-debian:latest .
 
-    - name: Push To GHCR
+    - name: Push to Quay
       run: |
         docker login quay.io -u ${{ secrets.QUAY_USER }} -p ${{ secrets.QUAY_TOKEN }}
         docker image push "quay.io/kbdharun/kasm-dev-debian:latest"

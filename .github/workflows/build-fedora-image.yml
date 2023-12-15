@@ -22,7 +22,7 @@ jobs:
     - name: Build the Docker image
       run: docker image build -f configs/Fedora/XFCE/Dockerfile -t docker.io/kbdharun/kasm-dev-fedora:latest .
 
-    - name: Push To Docker Hub
+    - name: Push to DockerHub
       run: |
         docker login docker.io -u kbdharun -p ${{ secrets.DOCKER_TOKEN }}
         docker image push "docker.io/kbdharun/kasm-dev-fedora:latest"
@@ -43,7 +43,7 @@ jobs:
     - name: Build the Docker image
       run: docker image build -f configs/Fedora/XFCE/Dockerfile -t ghcr.io/kbdharun/kasm-dev-fedora:latest .
 
-    - name: Push To GHCR
+    - name: Push to GHCR
       run: |
         docker login ghcr.io -u ${{ env.REGISTRY_USER }} -p ${{ env.REGISTRY_PASSWORD }}
         docker image push "ghcr.io/kbdharun/kasm-dev-fedora:latest"
@@ -64,7 +64,7 @@ jobs:
     - name: Build the Docker image
       run: docker image build -f configs/Fedora/XFCE/Dockerfile -t quay.io/kbdharun/kasm-dev-fedora:latest .
 
-    - name: Push To GHCR
+    - name: Push to Quay
       run: |
         docker login quay.io -u ${{ secrets.QUAY_USER }} -p ${{ secrets.QUAY_TOKEN }}
         docker image push "quay.io/kbdharun/kasm-dev-fedora:latest"
@@ -85,7 +85,7 @@ jobs:
     - name: Build the Docker image
       run: docker image build -f configs/Fedora/KDE/Dockerfile -t docker.io/kbdharun/kasm-dev-fedora-kde:latest .
 
-    - name: Push To Docker Hub
+    - name: Push to Docker Hub
       run: |
         docker login docker.io -u kbdharun -p ${{ secrets.DOCKER_TOKEN }}
         docker image push "docker.io/kbdharun/kasm-dev-fedora-kde:latest"
@@ -106,7 +106,7 @@ jobs:
     - name: Build the Docker image
       run: docker image build -f configs/Fedora/KDE/Dockerfile -t ghcr.io/kbdharun/kasm-dev-fedora-kde:latest .
 
-    - name: Push To GHCR
+    - name: Push to GHCR
       run: |
         docker login ghcr.io -u ${{ env.REGISTRY_USER }} -p ${{ env.REGISTRY_PASSWORD }}
         docker image push "ghcr.io/kbdharun/kasm-dev-fedora-kde:latest"
@@ -127,7 +127,7 @@ jobs:
     - name: Build the Docker image
       run: docker image build -f configs/Fedora/KDE/Dockerfile -t quay.io/kbdharun/kasm-dev-fedora-kde:latest .
 
-    - name: Push To GHCR
+    - name: Push to Quay
       run: |
         docker login quay.io -u ${{ secrets.QUAY_USER }} -p ${{ secrets.QUAY_TOKEN }}
         docker image push "quay.io/kbdharun/kasm-dev-fedora-kde:latest"

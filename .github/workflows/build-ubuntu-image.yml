@@ -23,7 +23,7 @@ jobs:
 
     - name: Push to DockerHub
       run: |
-        docker login docker.io -u kbdharun -p ${{ secrets.DOCKER_TOKEN }}
+        echo -n ${{ secrets.DOCKER_TOKEN }} | docker login docker.io -u kbdharun --password-stdin
         docker image push "docker.io/kbdharun/kasm-dev-ubuntu:latest"
 
     - uses: sigstore/cosign-installer@v3.3.0
@@ -44,7 +44,7 @@ jobs:
 
     - name: Push to GHCR
       run: |
-        docker login ghcr.io -u ${{ env.REGISTRY_USER }} -p ${{ env.REGISTRY_PASSWORD }}
+        echo -n ${{ env.REGISTRY_PASSWORD }} | docker login ghcr.io -u ${{ env.REGISTRY_USER }} --password-stdin
         docker image push "ghcr.io/kbdharun/kasm-dev-ubuntu:latest"
 
     - uses: sigstore/cosign-installer@v3.3.0
@@ -65,7 +65,7 @@ jobs:
 
     - name: Push to Quay
       run: |
-        docker login quay.io -u ${{ secrets.QUAY_USER }} -p ${{ secrets.QUAY_TOKEN }}
+        echo -n ${{ secrets.QUAY_TOKEN }} | docker login quay.io -u ${{ secrets.QUAY_USER }} --password-stdin
         docker image push "quay.io/kbdharun/kasm-dev-ubuntu:latest"
     
     - uses: sigstore/cosign-installer@v3.3.0

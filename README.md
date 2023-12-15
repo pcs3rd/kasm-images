@@ -23,7 +23,7 @@ Available via:
 - GHCR (GitHub Container Registry): `ghcr.io/kbdharun/kasm-dev-debian:latest`
 - DockerHub: `docker.io/kbdharun/kasm-dev-debian:latest`
 
-To verify the integrity of the image using `cosign` (download the `cosign.pub` file from [here](https://github.com/kbdharun/kasm-images/blob/main/cosign.pub) and execute the following command):
+To verify the container image using [`cosign`](https://github.com/sigstore/cosign) (download the `cosign.pub` file from [here](https://github.com/kbdharun/kasm-images/blob/main/cosign.pub) and execute the following command):
 
 - For GHCR (GitHub Container Registry) image:
 
@@ -46,7 +46,7 @@ Available via:
 - GHCR (GitHub Container Registry): `ghcr.io/kbdharun/kasm-dev-ubuntu:latest`
 - DockerHub: `docker.io/kbdharun/kasm-dev-ubuntu:latest`
 
-To verify the integrity of the image using `cosign` (download the `cosign.pub` file from [here](https://github.com/kbdharun/kasm-images/blob/main/cosign.pub) and execute the following command):
+To verify the container image using [`cosign`](https://github.com/sigstore/cosign) (download the `cosign.pub` file from [here](https://github.com/kbdharun/kasm-images/blob/main/cosign.pub) and execute the following command):
 
 - For GHCR (GitHub Container Registry) image:
 
@@ -69,7 +69,7 @@ Available via:
 - GHCR (GitHub Container Registry): `ghcr.io/kbdharun/kasm-dev-fedora:latest` and `ghcr.io/kbdharun/kasm-dev-fedora-kde:latest`
 - DockerHub: `docker.io/kbdharun/kasm-dev-fedora:latest` and `docker.io/kbdharun/kasm-dev-fedora-kde:latest`
 
-To verify the integrity of the image using `cosign` (download the `cosign.pub` file from [here](https://github.com/kbdharun/kasm-images/blob/main/cosign.pub) and execute the following command):
+To verify the container image using [`cosign`](https://github.com/sigstore/cosign) (download the `cosign.pub` file from [here](https://github.com/kbdharun/kasm-images/blob/main/cosign.pub) and execute the following command):
 
 - For GHCR (GitHub Container Registry) image:
 

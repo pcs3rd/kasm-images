@@ -6,7 +6,7 @@ along with additional packages of programming languages for development."
 LABEL org.opencontainers.image.source="https://github.com/kbdharun/kasm-images"
 LABEL org.opencontainers.image.authors="K.B.Dharun Krishna mail@kbdharun.dev"
 LABEL org.opencontainers.image.vendor="kbdharun.dev"
-LABEL org.opencontainers.image.licenses"="GPL-3.0-only"
+LABEL org.opencontainers.image.licenses="GPL-3.0-only"
 
 # Preinstall popular programming languages and package managers
 

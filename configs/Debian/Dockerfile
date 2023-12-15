@@ -1,4 +1,5 @@
 FROM lscr.io/linuxserver/webtop:debian-xfce
+LABEL org.opencontainers.image.authors="K.B.Dharun Krishna mail@kbdharun.dev"
 
 # Preinstall popular programming languages and package managers
 RUN apt-get update && \

@@ -19,7 +19,7 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Build the Docker image
-      run: docker image build -f configs/Debian-DockerFile -t docker.io/kbdharun/kasm-dev-debian:latest .
+      run: docker image build -f configs/Debian/Dockerfile -t docker.io/kbdharun/kasm-dev-debian:latest .
 
     - name: Push To Docker Hub
       run: |
@@ -40,7 +40,7 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Build the Docker image
-      run: docker image build -f configs/Debian-DockerFile -t ghcr.io/kbdharun/kasm-dev-debian:latest .
+      run: docker image build -f configs/Debian/Dockerfile -t ghcr.io/kbdharun/kasm-dev-debian:latest .
 
     - name: Push To GHCR
       run: |

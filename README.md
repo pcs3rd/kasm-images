@@ -12,7 +12,7 @@ This repository contains my custom development images for [Kasm Workspaces](http
 ## Images
 
 > [!NOTE]
-> The images in this repository are not official images and are not supported by Kasm Technologies. If you have any issues with these images, please open an issue in this repository and not upstream. All images are built with Linuxserver.io images as a base and are available in GHCR (GitHub Container Registry) and DockerHub.
+> The images in this repository are not official images and are not supported by Kasm Technologies. If you have any issues with these images, please open an issue in this repository and not upstream. All images are built with Linuxserver.io images as a base.
 
 ### Debian image
 
@@ -22,6 +22,7 @@ Available via:
 
 - GHCR (GitHub Container Registry): `ghcr.io/kbdharun/kasm-dev-debian:latest`
 - DockerHub: `docker.io/kbdharun/kasm-dev-debian:latest`
+- Quay: `quay.io/kbdharun/kasm-dev-debian:latest`
 
 To verify the container image using [`cosign`](https://github.com/sigstore/cosign) (download the `cosign.pub` file from [here](https://github.com/kbdharun/kasm-images/blob/main/cosign.pub) and execute the following command):
 
@@ -37,6 +38,12 @@ cosign verify --key cosign.pub ghcr.io/kbdharun/kasm-dev-debian:latest
 cosign verify --key cosign.pub docker.io/kbdharun/kasm-dev-debian:latest
 ```
 
+- For Quay image:
+
+```zsh
+cosign verify --key cosign.pub quay.io/kbdharun/kasm-dev-debian:latest
+```
+
 ### Ubuntu image
 
 This image is based on the Linuxserver.io Ubuntu image using XFCE as the desktop environment along with additional packages of programming languages for development.
@@ -45,6 +52,7 @@ Available via:
 
 - GHCR (GitHub Container Registry): `ghcr.io/kbdharun/kasm-dev-ubuntu:latest`
 - DockerHub: `docker.io/kbdharun/kasm-dev-ubuntu:latest`
+- Quay: `quay.io/kbdharun/kasm-dev-ubuntu:latest`
 
 To verify the container image using [`cosign`](https://github.com/sigstore/cosign) (download the `cosign.pub` file from [here](https://github.com/kbdharun/kasm-images/blob/main/cosign.pub) and execute the following command):
 
@@ -60,6 +68,12 @@ cosign verify --key cosign.pub ghcr.io/kbdharun/kasm-dev-ubuntu:latest
 cosign verify --key cosign.pub docker.io/kbdharun/kasm-dev-ubuntu:latest
 ```
 
+- For Quay image:
+
+```zsh
+cosign verify --key cosign.pub quay.io/kbdharun/kasm-dev-ubuntu:latest
+```
+
 ### Fedora image
 
 There are two images based on the Linuxserver.io Fedora image. One uses XFCE as the desktop environment and the other uses KDE Plasma as the desktop environment. Both images have additional packages of programming languages for development.
@@ -68,6 +82,7 @@ Available via:
 
 - GHCR (GitHub Container Registry): `ghcr.io/kbdharun/kasm-dev-fedora:latest` and `ghcr.io/kbdharun/kasm-dev-fedora-kde:latest`
 - DockerHub: `docker.io/kbdharun/kasm-dev-fedora:latest` and `docker.io/kbdharun/kasm-dev-fedora-kde:latest`
+- Quay: `quay.io/kbdharun/kasm-dev-fedora:latest` and `quay.io/kbdharun/kasm-dev-fedora-kde:latest`
 
 To verify the container image using [`cosign`](https://github.com/sigstore/cosign) (download the `cosign.pub` file from [here](https://github.com/kbdharun/kasm-images/blob/main/cosign.pub) and execute the following command):
 
@@ -83,6 +98,13 @@ cosign verify --key cosign.pub ghcr.io/kbdharun/kasm-dev-fedora-kde:latest
 ```zsh
 cosign verify --key cosign.pub docker.io/kbdharun/kasm-dev-fedora:latest
 cosign verify --key cosign.pub docker.io/kbdharun/kasm-dev-fedora-kde:latest
+```
+
+- For Quay image:
+
+```zsh
+cosign verify --key cosign.pub quay.io/kbdharun/kasm-dev-fedora:latest
+cosign verify --key cosign.pub quay.io/kbdharun/kasm-dev-fedora-kde:latest
 ```
 
 ## Using as webtop

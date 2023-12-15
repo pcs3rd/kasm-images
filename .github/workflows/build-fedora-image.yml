@@ -56,6 +56,27 @@ jobs:
         COSIGN_EXPERIMENTAL: false
         COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
 
+  fedora-image-quay:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Build the Docker image
+      run: docker image build -f configs/Fedora/XFCE/Dockerfile -t quay.io/kbdharun/kasm-dev-fedora:latest .
+
+    - name: Push To GHCR
+      run: |
+        docker login quay.io -u ${{ env.QUAY_USER }} -p ${{ env.QUAY_TOKEN }}
+        docker image push "quay.io/kbdharun/kasm-dev-fedora:latest"
+    
+    - uses: sigstore/cosign-installer@v3.3.0
+    - name: Sign container image
+      run: |
+        cosign sign -y --key env://COSIGN_PRIVATE_KEY quay.io/kbdharun/kasm-dev-fedora:latest
+      env:
+        COSIGN_EXPERIMENTAL: false
+        COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
+
   fedora-kde-image-docker:
     runs-on: ubuntu-latest
     steps:
@@ -94,6 +115,27 @@ jobs:
     - name: Sign container image
       run: |
         cosign sign -y --key env://COSIGN_PRIVATE_KEY ghcr.io/kbdharun/kasm-dev-fedora-kde:latest
+      env:
+        COSIGN_EXPERIMENTAL: false
+        COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
+
+  fedora-kde-image-quay:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Build the Docker image
+      run: docker image build -f configs/Fedora/KDE/Dockerfile -t quay.io/kbdharun/kasm-dev-fedora-kde:latest .
+
+    - name: Push To GHCR
+      run: |
+        docker login quay.io -u ${{ env.QUAY_USER }} -p ${{ env.QUAY_TOKEN }}
+        docker image push "quay.io/kbdharun/kasm-dev-fedora-kde:latest"
+    
+    - uses: sigstore/cosign-installer@v3.3.0
+    - name: Sign container image
+      run: |
+        cosign sign -y --key env://COSIGN_PRIVATE_KEY quay.io/kbdharun/kasm-dev-fedora-kde:latest
       env:
         COSIGN_EXPERIMENTAL: false
         COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}

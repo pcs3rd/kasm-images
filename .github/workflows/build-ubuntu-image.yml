@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "main" ]
     paths:
-        - configs/Ubuntu
+        - configs/Ubuntu/Dockerfile
   workflow_dispatch:
 
 env:

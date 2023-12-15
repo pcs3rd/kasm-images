@@ -4,7 +4,8 @@ on:
   push:
     branches: [ "main" ]
     paths:
-        - configs/Fedora
+        - configs/Fedora/KDE/Dockerfile
+        - configs/Fedora/XFCE/Dockerfile
   workflow_dispatch:
 
 env:

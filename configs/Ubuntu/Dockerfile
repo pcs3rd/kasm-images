@@ -1,5 +1,8 @@
 FROM lscr.io/linuxserver/webtop:ubuntu-xfce
 LABEL org.opencontainers.image.authors="K.B.Dharun Krishna mail@kbdharun.dev"
+LABEL description="This image is based on \
+the Linuxserver.io Ubuntu image using XFCE as the desktop environment \
+along with additional packages of programming languages for development."
 
 # Preinstall popular programming languages and package managers
 RUN apt-get update && \

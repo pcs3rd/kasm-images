@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "main" ]
     paths:
-        - configs/Debian-DockerFile
+        - configs/Debian
   workflow_dispatch:
 
 env:

@@ -1,6 +1,6 @@
 # kasm-images
 
-This repository contains my custom Images for Kasm Workspace.
+This repository contains my custom development images for Kasm Workspace.
 
 ## Quick Reference
 

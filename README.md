@@ -115,7 +115,7 @@ cosign verify --key cosign.pub quay.io/kbdharun/kasm-dev-fedora-kde:latest
 
 ## Image Build Attestation
 
-All the image builds/pushes are attested for provenanve and integrty using [`actions/attest-build-provenance`](https://github.com/actions/attest-build-provenance). They can be verfied by downloading the recent bundle from the [attestations page](https://github.com/kbdharun/kasm-images/attestations) and having the latest version of [GitHub CLI](https://github.com/cli/cli/releases/latest) installed in your system. Then, execute the following command:
+All the image builds/pushes are attested for provenance and integrity using [`actions/attest-build-provenance`](https://github.com/actions/attest-build-provenance). They can be verfied by downloading the recent bundle from the [attestations page](https://github.com/kbdharun/kasm-images/attestations) and having the latest version of [GitHub CLI](https://github.com/cli/cli/releases/latest) installed in your system. Then, execute the following command:
 
 ```sh
 gh attestation verify oci://<insert-image-url> --owner kbdharun --bundle <path/to/attestation_file.sigstore.json>

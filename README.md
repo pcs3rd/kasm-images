@@ -24,6 +24,8 @@ Available via:
 - DockerHub: `docker.io/kbdharun/kasm-dev-debian:latest`
 - Quay: `quay.io/kbdharun/kasm-dev-debian:latest`
 
+---
+
 To verify the container image using [`cosign`](https://github.com/sigstore/cosign) (download the `cosign.pub` file from [here](https://github.com/kbdharun/kasm-images/blob/main/cosign.pub) and execute the following command):
 
 - For GHCR (GitHub Container Registry) image:
@@ -53,6 +55,8 @@ Available via:
 - GHCR (GitHub Container Registry): `ghcr.io/kbdharun/kasm-dev-ubuntu:latest`
 - DockerHub: `docker.io/kbdharun/kasm-dev-ubuntu:latest`
 - Quay: `quay.io/kbdharun/kasm-dev-ubuntu:latest`
+
+---
 
 To verify the container image using [`cosign`](https://github.com/sigstore/cosign) (download the `cosign.pub` file from [here](https://github.com/kbdharun/kasm-images/blob/main/cosign.pub) and execute the following command):
 
@@ -84,6 +88,8 @@ Available via:
 - DockerHub: `docker.io/kbdharun/kasm-dev-fedora:latest` and `docker.io/kbdharun/kasm-dev-fedora-kde:latest`
 - Quay: `quay.io/kbdharun/kasm-dev-fedora:latest` and `quay.io/kbdharun/kasm-dev-fedora-kde:latest`
 
+---
+
 To verify the container image using [`cosign`](https://github.com/sigstore/cosign) (download the `cosign.pub` file from [here](https://github.com/kbdharun/kasm-images/blob/main/cosign.pub) and execute the following command):
 
 - For GHCR (GitHub Container Registry) image:
@@ -106,6 +112,16 @@ cosign verify --key cosign.pub docker.io/kbdharun/kasm-dev-fedora-kde:latest
 cosign verify --key cosign.pub quay.io/kbdharun/kasm-dev-fedora:latest
 cosign verify --key cosign.pub quay.io/kbdharun/kasm-dev-fedora-kde:latest
 ```
+
+## Image Build Attestation
+
+All the image builds/pushes are attested for provenanve and integrty using [`actions/attest-build-provenance`](https://github.com/actions/attest-build-provenance). They can be verfied by downloading the recent bundle from the [attestations page](https://github.com/kbdharun/kasm-images/attestations) and having the latest version of [GitHub CLI](https://github.com/cli/cli/releases/latest) installed in your system. Then, execute the following command:
+
+```sh
+gh attestation verify oci://<insert-image-url> --owner kbdharun --bundle <path/to/attestation_file.sigstore.json>
+```
+
+Where, `<insert-image-url>` is the URL of the image you want to verify (don't specify a tag) and `<path/to/attestation_file.sigstore.json>` is the path to the downloaded attestation file.
 
 ## Using as webtop
 

@@ -5,7 +5,7 @@ on:
     branches: [ "main" ]
     paths:
         - configs/Debian/Dockerfile
-        - .github/workflows/build-debian-images.yml
+        - .github/workflows/build-debian-image.yml
   workflow_dispatch:
 
 env:

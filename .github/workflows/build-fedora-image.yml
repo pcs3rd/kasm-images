@@ -6,7 +6,7 @@ on:
     paths:
         - configs/Fedora/KDE/Dockerfile
         - configs/Fedora/XFCE/Dockerfile
-        - .github/workflows/build-debian-image.yml
+        - .github/workflows/build-fedora-image.yml
   workflow_dispatch:
 
 env:

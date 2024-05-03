@@ -25,7 +25,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Login to GitHub Container Registry
+    - name: Login to Docker Hub
       uses: docker/login-action@v3
       with:
           registry: ${{ env.REGISTRY2 }}
@@ -48,7 +48,7 @@ jobs:
         COSIGN_EXPERIMENTAL: false
         COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
 
-    - name: Attest image
+    - name: Attest pushed image
       uses: actions/attest-build-provenance@v1
       id: attest
       with:
@@ -89,7 +89,7 @@ jobs:
         COSIGN_EXPERIMENTAL: false
         COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
 
-    - name: Attest image
+    - name: Attest pushed image
       uses: actions/attest-build-provenance@v1
       id: attest
       with:
@@ -106,11 +106,11 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Login to GitHub Container Registry
+    - name: Login to QUAY
       uses: docker/login-action@v3
       with:
           registry: ${{ env.REGISTRY3 }}
-          username: ${{ github.actor }}
+          username: ${{ secrets.QUAY_USER }}
           password:  ${{ secrets.QUAY_TOKEN }}
 
     - name: Build and push image
@@ -129,7 +129,7 @@ jobs:
         COSIGN_EXPERIMENTAL: false
         COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
   
-    - name: Attest image
+    - name: Attest pushed image
       uses: actions/attest-build-provenance@v1
       id: attest
       with:

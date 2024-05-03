@@ -38,12 +38,12 @@ jobs:
       with:
         context: configs/Debian
         push: true
-        tags: ${{ env.REGISTRY2 }}/${{ env.IMAGE_NAME }}:latest
+        tags: ${{ env.REGISTRY2 }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:latest
     
     - uses: sigstore/cosign-installer@v3.5.0
     - name: Sign container image
       run: |
-        cosign sign -y --key env://COSIGN_PRIVATE_KEY ${{ env.REGISTRY2 }}/${{ env.IMAGE_NAME }}:latest
+        cosign sign -y --key env://COSIGN_PRIVATE_KEY ${{ env.REGISTRY2 }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:latest
       env:
         COSIGN_EXPERIMENTAL: false
         COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
@@ -52,7 +52,7 @@ jobs:
       uses: actions/attest-build-provenance@v1
       id: attest
       with:
-        subject-name: ${{ env.REGISTRY2 }}/${{ env.IMAGE_NAME }}
+        subject-name: ${{ env.REGISTRY2 }}/${{ github.actor }}/${{ env.IMAGE_NAME }}
         subject-digest: ${{ steps.push-docker.outputs.digest }}
         push-to-registry: true
 
@@ -79,12 +79,12 @@ jobs:
       with:
         context: configs/Debian
         push: true
-        tags: ${{ env.REGISTRY1 }}/${{ env.IMAGE_NAME }}:latest
+        tags: ${{ env.REGISTRY1 }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:latest
     
     - uses: sigstore/cosign-installer@v3.5.0
     - name: Sign container image
       run: |
-        cosign sign -y --key env://COSIGN_PRIVATE_KEY ${{ env.REGISTRY1 }}/${{ env.IMAGE_NAME }}:latest
+        cosign sign -y --key env://COSIGN_PRIVATE_KEY ${{ env.REGISTRY1 }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:latest
       env:
         COSIGN_EXPERIMENTAL: false
         COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
@@ -93,7 +93,7 @@ jobs:
       uses: actions/attest-build-provenance@v1
       id: attest
       with:
-        subject-name: ${{ env.REGISTRY1 }}/${{ env.IMAGE_NAME }}
+        subject-name: ${{ env.REGISTRY1 }}/${{ github.actor }}/${{ env.IMAGE_NAME }}
         subject-digest: ${{ steps.push-ghcr.outputs.digest }}
         push-to-registry: true
 
@@ -119,12 +119,12 @@ jobs:
       with:
         context: configs/Debian
         push: true
-        tags: ${{ env.REGISTRY3 }}/${{ env.IMAGE_NAME }}:latest
+        tags: ${{ env.REGISTRY3 }}/${{ secrets.QUAY_USER }}/${{ env.IMAGE_NAME }}:latest
     
     - uses: sigstore/cosign-installer@v3.5.0
     - name: Sign container image
       run: |
-        cosign sign -y --key env://COSIGN_PRIVATE_KEY ${{ env.REGISTRY3 }}/${{ env.IMAGE_NAME }}:latest
+        cosign sign -y --key env://COSIGN_PRIVATE_KEY ${{ env.REGISTRY3 }}/${{ secrets.QUAY_USER }}/${{ env.IMAGE_NAME }}:latest
       env:
         COSIGN_EXPERIMENTAL: false
         COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
@@ -133,6 +133,6 @@ jobs:
       uses: actions/attest-build-provenance@v1
       id: attest
       with:
-        subject-name: ${{ env.REGISTRY3 }}/${{ env.IMAGE_NAME }}
+        subject-name: ${{ env.REGISTRY3 }}/${{ secrets.QUAY_USER }}/${{ env.IMAGE_NAME }}
         subject-digest: ${{ steps.push-quay.outputs.digest }}
         push-to-registry: true

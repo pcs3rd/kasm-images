@@ -42,7 +42,7 @@ jobs:
         push: true
         tags: ${{ env.REGISTRY2 }}/${{ github.actor }}/${{ env.IMAGE_NAME1 }}:latest
     
-    - uses: sigstore/cosign-installer@v3.5.0
+    - uses: sigstore/cosign-installer@v3.6.0
     - name: Sign container image
       run: |
         cosign sign -y --key env://COSIGN_PRIVATE_KEY ${{ env.REGISTRY2 }}/${{ github.actor }}/${{ env.IMAGE_NAME1 }}:latest
@@ -83,7 +83,7 @@ jobs:
         push: true
         tags: ${{ env.REGISTRY1 }}/${{ github.actor }}/${{ env.IMAGE_NAME1 }}:latest
     
-    - uses: sigstore/cosign-installer@v3.5.0
+    - uses: sigstore/cosign-installer@v3.6.0
     - name: Sign container image
       run: |
         cosign sign -y --key env://COSIGN_PRIVATE_KEY ${{ env.REGISTRY1 }}/${{ github.actor }}/${{ env.IMAGE_NAME1 }}:latest
@@ -123,7 +123,7 @@ jobs:
         push: true
         tags: ${{ env.REGISTRY3 }}/${{ github.actor }}/${{ env.IMAGE_NAME1 }}:latest
     
-    - uses: sigstore/cosign-installer@v3.5.0
+    - uses: sigstore/cosign-installer@v3.6.0
     - name: Sign container image
       run: |
         cosign sign -y --key env://COSIGN_PRIVATE_KEY ${{ env.REGISTRY3 }}/${{ github.actor }}/${{ env.IMAGE_NAME1 }}:latest
@@ -163,7 +163,7 @@ jobs:
         push: true
         tags: ${{ env.REGISTRY2 }}/${{ github.actor }}/${{ env.IMAGE_NAME2 }}:latest
     
-    - uses: sigstore/cosign-installer@v3.5.0
+    - uses: sigstore/cosign-installer@v3.6.0
     - name: Sign container image
       run: |
         cosign sign -y --key env://COSIGN_PRIVATE_KEY ${{ env.REGISTRY2 }}/${{ github.actor }}/${{ env.IMAGE_NAME2 }}:latest
@@ -204,7 +204,7 @@ jobs:
         push: true
         tags: ${{ env.REGISTRY1 }}/${{ github.actor }}/${{ env.IMAGE_NAME2 }}:latest
     
-    - uses: sigstore/cosign-installer@v3.5.0
+    - uses: sigstore/cosign-installer@v3.6.0
     - name: Sign container image
       run: |
         cosign sign -y --key env://COSIGN_PRIVATE_KEY ${{ env.REGISTRY1 }}/${{ github.actor }}/${{ env.IMAGE_NAME2 }}:latest
@@ -244,7 +244,7 @@ jobs:
         push: true
         tags: ${{ env.REGISTRY3 }}/${{ github.actor }}/${{ env.IMAGE_NAME2 }}:latest
     
-    - uses: sigstore/cosign-installer@v3.5.0
+    - uses: sigstore/cosign-installer@v3.6.0
     - name: Sign container image
       run: |
         cosign sign -y --key env://COSIGN_PRIVATE_KEY ${{ env.REGISTRY3 }}/${{ github.actor }}/${{ env.IMAGE_NAME2 }}:latest

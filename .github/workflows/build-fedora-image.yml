@@ -36,7 +36,7 @@ jobs:
 
     - name: Build and push image
       id: push-docker
-      uses: docker/build-push-action@v6.7.0
+      uses: docker/build-push-action@v6.9.0
       with:
         context: configs/Fedora/XFCE
         push: true
@@ -77,7 +77,7 @@ jobs:
 
     - name: Build and push image
       id: push-ghcr
-      uses: docker/build-push-action@v6.7.0
+      uses: docker/build-push-action@v6.9.0
       with:
         context: configs/Fedora/XFCE
         push: true
@@ -117,7 +117,7 @@ jobs:
 
     - name: Build and push image
       id: push-quay
-      uses: docker/build-push-action@v6.7.0
+      uses: docker/build-push-action@v6.9.0
       with:
         context: configs/Fedora/XFCE
         push: true
@@ -157,7 +157,7 @@ jobs:
 
     - name: Build and push image
       id: push-docker
-      uses: docker/build-push-action@v6.7.0
+      uses: docker/build-push-action@v6.9.0
       with:
         context: configs/Fedora/KDE
         push: true
@@ -198,7 +198,7 @@ jobs:
 
     - name: Build and push image
       id: push-ghcr
-      uses: docker/build-push-action@v6.7.0
+      uses: docker/build-push-action@v6.9.0
       with:
         context: configs/Fedora/KDE
         push: true
@@ -238,7 +238,7 @@ jobs:
 
     - name: Build and push image
       id: push-quay
-      uses: docker/build-push-action@v6.7.0
+      uses: docker/build-push-action@v6.9.0
       with:
         context: configs/Fedora/KDE
         push: true

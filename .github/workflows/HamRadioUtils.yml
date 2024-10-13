@@ -33,7 +33,7 @@ jobs:
       id: push-ghcr
       uses: docker/build-push-action@v6.9.0
       with:
-        context: configs/Debian
+        context: configs/HamRadioUtils
         push: true
         tags: ghcr.io/${{ github.actor }}/${{ env.IMAGE_NAME }}:latest
   

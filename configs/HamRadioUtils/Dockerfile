@@ -7,6 +7,7 @@ LABEL org.opencontainers.image.vendor="pcs3rd"
 LABEL org.opencontainers.image.licenses="GPL-3.0-only"
 
 # Preinstall popular programming languages and package managers
+USER root
 RUN apt-get update && \
     apt-get install -y \
     hamradio-antenna hamradio-datamodes hamradio-digitalvoice hamradio-logging hamradio-morse hamradio-nonamateur hamradio-packetmodes hamradio-rigcontrol hamradio-satellite hamradio-sdr hamradio-tasks hamradio-tools hamradio-training

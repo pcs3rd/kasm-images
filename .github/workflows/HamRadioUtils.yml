@@ -4,12 +4,12 @@ on:
   push:
     branches: [ "main" ]
     paths:
-        - configs/Debian/Dockerfile
-        - .github/workflows/build-debian-image.yml
+        - configs/HamRadioUtils/Dockerfile
+        - .github/workflows/HamRadioUtils.yml
   workflow_dispatch:
 
 env:
-  IMAGE_NAME: HamRadioUtils
+  IMAGE_NAME: hamradioutils
 
 jobs:
   debian-image-ghcr:

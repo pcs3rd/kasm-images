@@ -1,4 +1,4 @@
-FROM kasmweb/kasmos-desktop
+FROM kasmweb/kasmos-desktop:1.16.0
 LABEL org.opencontainers.image.title="HamRadioUtils"
 LABEL org.opencontainers.image.description="Ham Radio Utilities"
 LABEL org.opencontainers.image.source="https://github.com/pcs3rd/kasm-images"
